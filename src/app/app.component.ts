@@ -142,15 +142,8 @@ export class AppComponent {
   }
 
   ChangePage(event: PageEvent) {
-  //  console.log(event);
     this.pageSize = event.pageSize;
     this.pageSizeOptions = event.pageIndex;
-    // console.log(this.isArray);
-    // console.log(this.isArrayc);
-    // console.log(
-    //   this.isArray[event.pageIndex] === true &&
-    //     this.isArrayc[this.pageSizeOptions] !== event.pageSize
-    // );
     if (
       this.isArray[event.pageIndex] === true &&
       this.isArrayc[this.pageSizeOptions] === event.pageSize
@@ -167,12 +160,6 @@ export class AppComponent {
       this.isArrayc[this.pageSizeOptions] = this.pageSize;
       this.isSelected = false;
     }
-
-
-    // console.log(this.selection);
-
-    //  this.toggleAllRows(event);
-    //  console.log(this.pageSize*this.pageSizeOptions, this.pageSize*(this.pageSizeOptions+1))
   }
 
   pag(ui: any, ui1: any, ui2: any) {
