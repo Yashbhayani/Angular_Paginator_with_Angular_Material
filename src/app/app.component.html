@@ -1,0 +1,79 @@
+<div>
+  
+  <div class="row">
+    <div>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+      
+
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? toggleAllRows($event) : null"
+                              [checked]="isSelected"
+                              [aria-label]="checkboxLabel()"> 
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                              (change)="$event ? selection.toggle(row) : null"
+                              [checked]="selection.isSelected(row)"
+                              [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+              </td>
+            </ng-container>
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          </ng-container>
+      
+          <!-- Progress Column -->
+          <ng-container matColumnDef="progress">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
+            <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+          </ng-container>
+      
+          <!-- Fruit Column -->
+          <ng-container matColumnDef="fruit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Fruit </th>
+            <td mat-cell *matCellDef="let row"> {{row.fruit}} </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+        </table>
+      
+        <mat-paginator [length]="100"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+              (page)="ChangePage($event)"
+              #ui
+              >
+</mat-paginator>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+<!-- <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+              (page)="ChangePage($event)"
+              #ui
+              >
+</mat-paginator>
+<button mat-raised-button color="primary" (click)="pag(ui.pageIndex, ui.pageSize, ui.length)">Primary</button> -->
+
+
